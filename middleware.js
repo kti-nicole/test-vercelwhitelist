@@ -3,10 +3,10 @@ import { ipAddress, next } from '@vercel/edge';
 
 export function middleware(request) {
   const ip = ipAddress(request);
-  const ipBlocklist = new net.BlockList();
+  //const ipBlocklist = new net.BlockList();
 
   //Imperva IPs
-  ipBlocklist.addSubnet('199.83.128.0', 21, 'ipv4');
+  /*ipBlocklist.addSubnet('199.83.128.0', 21, 'ipv4');
   ipBlocklist.addSubnet('198.143.32.0', 19, 'ipv4');
   ipBlocklist.addSubnet('149.126.72.0', 21, 'ipv4');
   ipBlocklist.addSubnet('103.28.248.0', 22, 'ipv4');
@@ -28,7 +28,11 @@ export function middleware(request) {
   } else {
     //console.log(ip + " is not on the whitelist.");
     return next({ headers: { 'x-ip-blocked': 'false'}, });
-  }
+  } */
 
-  return next();
+  if (ip == '207.216.164.103') {
+    return next({ headers: { 'x-ip-blocked': 'false'}, });
+  } else {
+    return next({ headers: { 'x-ip-blocked': 'true'}, });
+  }
 }
