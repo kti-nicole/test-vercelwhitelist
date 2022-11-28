@@ -23,9 +23,11 @@ export function middleware(request) {
 
   //The blocklist contains our whitelisted IPs, so if not on blocklist then allow
   if (!ipBlocklist.check(ip)) {
-    console.log(ip + " is on the whitelist.");
+    //console.log(ip + " is on the whitelist.");
+    return next({ headers: { 'x-ip-blocked': 'false'}, });
   } else {
-    console.log(ip + " is not on the whitelist.");
+    //console.log(ip + " is not on the whitelist.");
+    return next({ headers: { 'x-ip-blocked': 'false'}, });
   }
 
   return next();
