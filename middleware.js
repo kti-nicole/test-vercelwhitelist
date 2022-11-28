@@ -1,6 +1,5 @@
 import { ipAddress, next } from '@vercel/edge';
 var ipRangeCheck = require("./ip-range-check");
-//import { BlockList } from 'net';
 
 export default function middleware(request) {
   const ip = ipAddress(request);
@@ -22,6 +21,6 @@ export default function middleware(request) {
     return next();
   } else {
     url.pathname = '/blocked.html';
-    return Response.redirect(url, 403);
+    return Response.redirect(url);
   }
 }
