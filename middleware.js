@@ -1,9 +1,9 @@
 import { ipAddress, next } from '@vercel/edge';
-import { BlockList } from 'net';
+//import { BlockList } from 'net';
 
 export function middleware(request) {
   const ip = ipAddress(request);
-  const ipBlocklist = new BlockList();
+  const ipBlocklist = new net.BlockList();
 
   //Imperva IPs
   ipBlocklist.addSubnet('199.83.128.0', 21, 'ipv4');
