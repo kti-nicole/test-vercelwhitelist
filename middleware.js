@@ -7,7 +7,7 @@ export default function middleware(request) {
   //const ipBlocklist = new net.BlockList();
 
   //Imperva IPs
-  /*ipBlocklist.addSubnet('199.83.128.0', 21, 'ipv4');
+  ipBlocklist.addSubnet('199.83.128.0', 21, 'ipv4');
   ipBlocklist.addSubnet('198.143.32.0', 19, 'ipv4');
   ipBlocklist.addSubnet('149.126.72.0', 21, 'ipv4');
   ipBlocklist.addSubnet('103.28.248.0', 22, 'ipv4');
@@ -24,14 +24,6 @@ export default function middleware(request) {
 
   //The blocklist contains our whitelisted IPs, so if not on blocklist then allow
   if (!ipBlocklist.check(ip)) {
-    //console.log(ip + " is on the whitelist.");
-    return next({ headers: { 'x-ip-blocked': 'false'}, });
-  } else {
-    //console.log(ip + " is not on the whitelist.");
-    return next({ headers: { 'x-ip-blocked': 'false'}, });
-  } */
-
-  if (ip == '207.216.164.103') {
     return next();
   } else {
     url.pathname = '/blocked.html';
