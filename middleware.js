@@ -33,4 +33,5 @@ export function middleware(request) {
   if (ip == '207.216.164.103') {
     return next({ headers: { 'x-ip-blocked': 'false'}, });
   }
+  return false;
 }
