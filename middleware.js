@@ -1,8 +1,9 @@
 import { ipAddress, next } from '@vercel/edge';
 //import { BlockList } from 'net';
 
-export function middleware(request) {
+export default function middleware(request) {
   const ip = ipAddress(request);
+  const url = new URL(request.url);
   //const ipBlocklist = new net.BlockList();
 
   //Imperva IPs
@@ -31,7 +32,9 @@ export function middleware(request) {
   } */
 
   if (ip == '207.216.164.103') {
-    return next({ headers: { 'x-ip-blocked': 'false'}, });
+    return next();
+  } else {
+    url.pathname = '/blocked.html';
+    return Response.redirect(url);
   }
-  return false;
 }
