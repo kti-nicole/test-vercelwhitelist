@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@vercel/edge": "^0.1.2",
-    "ip-range-check": "^0.2.0",
-    "net": "^1.0.2"
-  }
-}
