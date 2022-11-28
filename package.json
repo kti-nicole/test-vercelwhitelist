@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "net": "^1.0.2",
+    "next": "^13.0.5",
     "vercel": "^28.5.6"
   }
 }
